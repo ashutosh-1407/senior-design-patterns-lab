@@ -1,48 +1,34 @@
-# Dungeon Arena
+# Senior Design Pattern Lab
 
-A hands-on project for learning SOLID principles and design patterns by evolving a small battle system.
+A learning project that evolves a small Dragon Arena game while applying SOLID principles and practical design patterns.
 
-## Run the application
+## Versions
 
-```bash
-python3 -m dungeon_arena
-```
+- Terminal game — Python domain/application code and tests.
+- Browser game — static HTML, CSS, and JavaScript under `web/`, suitable for GitHub Pages.
 
-## Run the graphical game
+## Run the terminal game
 
-```bash
-python3 -m dungeon_arena.gui
-```
+    python3 -m dungeon_arena
 
-## Run the tests
+Run tests:
 
-```bash
-python3 -m unittest discover -s tests
-```
+    python3 -m pytest
 
-## Learning agreement
+## Run the browser game locally
 
-- Start with the smallest design that satisfies the current requirements.
-- Introduce a pattern only after identifying the problem it solves.
-- You implement the domain classes; your guide reviews them and introduces the next requirement.
+From the `web/` directory:
 
-## Project structure
+    python3 -m http.server 8000
 
-```text
-dungeon_arena/domain/
-├── combat/       # Damage, attack input, and attack outcomes
-├── weapons/      # Weapon strategy and its implementations
-└── characters/   # Player and enemy entities
-```
+Open http://localhost:8000.
 
-## Current quest
+The browser version includes themed battlefield artwork, weapon-specific attack animations, Dragon health, undo, statistics, Fire/Ice themes, and a battle-complete state.
 
-Create `dungeon_arena/domain/characters/dragon.py` containing the Dragon entity.
+## Design patterns covered
 
-Requirements:
+Strategy, Factory Method, Abstract Factory, Adapter, Decorator, Observer, State, Command, Chain of Responsibility, Builder, Facade, Composite, Proxy, Singleton, and Template Method.
 
-- It starts with provided health and rejects negative health.
-- Its armor reduces physical damage by 3.
-- Magical damage ignores armor.
-- Its health never falls below zero.
-- It reports whether it is alive.
+## GitHub Pages
+
+Publish the `web/` directory as the Pages source, or configure a Pages workflow that deploys that directory. The browser version has no server-side dependency.
