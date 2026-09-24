@@ -1,0 +1,37 @@
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  background: #090f1c;
+  color: #f8fafc;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at top, #1f3552, #090f1c 70%);
+}
+
+#app { width: min(92vw, 760px); }
+.arena { padding: 2rem; border: 1px solid #38516d; border-radius: 20px; background: rgba(12,24,42,.92); box-shadow: 0 24px 80px #0008; }
+header { text-align: center; }.eyebrow { letter-spacing: .2em; font-size: .75rem; color: #ff9d5c; } h1 { margin: .3rem 0 1.5rem; }
+.dragon-panel { text-align: center; padding: .55rem 1rem; background: linear-gradient(160deg,#1b3048,#101b2c); border-radius: 12px; }.dragon { display: inline-block; font-size: 1.8rem; margin-right: .35rem; vertical-align: middle; }.dragon-panel h2 { display: inline-block; margin: 0 .5rem 0 0; font-size: 1rem; vertical-align: middle; }.dragon-panel p { display: inline-block; margin: 0 0 0 .5rem; font-size: .85rem; }
+.bar { height: 14px; background: #321d27; border-radius: 10px; overflow: hidden; }.bar span { display: block; height: 100%; background: #ef635d; transition: width .3s ease; }
+.stats { display: flex; justify-content: space-between; gap: 1rem; padding: 1.2rem 0; flex-wrap: wrap; } input { width: 5rem; padding: .45rem; border-radius: 8px; border: 1px solid #49627d; background: #0b1627; color: inherit; }
+.weapons { display: grid; grid-template-columns: repeat(3,1fr); gap: .8rem; } button { padding: 1rem .7rem; border: 1px solid #52708e; border-radius: 12px; background: #1c4160; color: #fff; cursor: pointer; font-weight: 700; } button:hover { filter: brightness(1.2); transform: translateY(-2px); }
+.theme { display: block; margin: 1rem auto 0; padding: .6rem 1rem; background: transparent; }.message { min-height: 1.5rem; text-align: center; color: #bfe7ff; }.ice .eyebrow { color: #8be7ff; }.ice button { background: #245b82; }
+.battlefield { position: relative; height: 500px; margin: 1rem 0; overflow: hidden; border: 1px solid #53647b; border-radius: 16px; perspective: 800px; background: #172946 url("./battlefield.png") center/cover no-repeat; box-shadow: inset 0 -35px 50px #050b12aa; }
+.battlefield:not(.attack-animation) { animation: battlefield-breathe 7s ease-in-out infinite; }
+.battlefield:not(.attack-animation)::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 18% 72%, #4bbcff28 0 8%, transparent 20%), radial-gradient(circle at 84% 34%, #ff6d2630 0 10%, transparent 24%); mix-blend-mode: screen; animation: character-aura 3.5s ease-in-out infinite alternate; }
+.battlefield.attack-animation { animation: arena-shake 900ms 650ms ease-out; }
+.battlefield.attack-animation::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(circle at 82% 42%, #fff8 0 3%, #ff8a0038 10%, transparent 28%); opacity: 0; animation: impact-flash 800ms 650ms ease-out; }
+.moon { position: absolute; width: 58px; height: 58px; right: 12%; top: 12%; border-radius: 50%; background: #e6f3dc; box-shadow: 0 0 25px #dfffb588; }
+.mountains, .ground, .moon { display: none; }
+.fighter { display: none; }.projectile, .impact { position: absolute; z-index: 3; opacity: 0; font-size: 2rem; transform-origin: left center; }.projectile { left: 16%; bottom: 29%; text-shadow: 0 0 8px #fff, 0 0 18px #70d7ff; }.impact { right: 17%; bottom: 48%; font-size: 3rem; }
+.attack-animation .projectile { animation: fly 700ms ease-out forwards; }.attack-animation .projectile.sword { animation: slash 700ms ease-out forwards; font-size: 3rem; }.attack-animation .projectile.bow { animation: arrow 700ms ease-out forwards; font-size: 3rem; }.attack-animation .projectile.staff { animation: bolt 700ms ease-out forwards; font-size: 2.6rem; }.attack-animation .impact { animation: hit 700ms 650ms ease-out forwards; }.attack-animation .dragon-sprite { animation: recoil 700ms 650ms ease-out; }
+@keyframes fly { 0% { opacity: 0; left: 16%; bottom: 29%; transform: scale(.25) rotate(-14deg); filter: blur(2px); } 15% { opacity: 1; } 100% { opacity: 1; left: 78%; bottom: 54%; transform: scale(1.35) rotate(-14deg); filter: blur(0); } } @keyframes slash { 0% { opacity: 0; left: 16%; bottom: 29%; transform: rotate(-55deg) scale(.25); } 45% { opacity: 1; left: 45%; bottom: 43%; transform: rotate(25deg) scale(.8); } 100% { opacity: 0; left: 77%; bottom: 54%; transform: rotate(70deg) scale(1.2); } } @keyframes arrow { 0% { opacity: 0; left: 16%; bottom: 29%; transform: rotate(-14deg) scale(.3); } 15% { opacity: 1; } 100% { opacity: 1; left: 78%; bottom: 54%; transform: rotate(-14deg) scale(1.25); } } @keyframes bolt { 0% { opacity: 0; left: 16%; bottom: 29%; transform: scale(.25); } 25% { opacity: 1; } 100% { opacity: 0; left: 78%; bottom: 54%; transform: scale(1.8); } } @keyframes hit { 0% { opacity: 0; transform: scale(.4); } 35% { opacity: 1; transform: scale(1.5); } 100% { opacity: 0; transform: scale(.9); } } @keyframes recoil { 0%,100% { transform: translateX(0); } 25% { transform: translateX(12px) rotate(5deg); } 55% { transform: translateX(-5px) rotate(-3deg); } }
+@keyframes arena-shake { 0%,100% { transform: translate(0); } 20% { transform: translate(-4px, 2px); } 40% { transform: translate(5px, -2px); } 60% { transform: translate(-3px, 1px); } 80% { transform: translate(2px, 0); } } @keyframes impact-flash { 0% { opacity: 0; transform: scale(.7); } 25% { opacity: 1; transform: scale(1.15); } 100% { opacity: 0; transform: scale(1.5); } }
+@keyframes battlefield-breathe { 0%,100% { background-position: 50% 50%; } 50% { background-position: 51% 49%; } } @keyframes character-aura { from { opacity: .45; } to { opacity: .95; } }
+.ice .battlefield { background: linear-gradient(#12334c 0 48%, #37616a 49% 72%, #17353d 73%); }.ice .ground { background-color: #8bd8e522; }.ice .projectile { filter: hue-rotate(145deg); }
+@media (max-width:560px) { .weapons { grid-template-columns: 1fr; } .arena { padding: 1.2rem; } .battlefield { height: 330px; } }

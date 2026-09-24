@@ -1,0 +1,2 @@
+"""Interchangeable weapon strategies."""
+
