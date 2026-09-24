@@ -5,7 +5,7 @@ A learning project that evolves a small Dragon Arena game while applying SOLID p
 ## Versions
 
 - Terminal game — Python domain/application code and tests.
-- Browser game — static HTML, CSS, and JavaScript under `web/`, suitable for GitHub Pages.
+- Browser game — static HTML, CSS, and JavaScript under `root/`, suitable for GitHub Pages.
 
 ## Run the terminal game
 
@@ -31,4 +31,4 @@ Strategy, Factory Method, Abstract Factory, Adapter, Decorator, Observer, State,
 
 ## GitHub Pages
 
-Publish the `web/` directory as the Pages source, or configure a Pages workflow that deploys that directory. The browser version has no server-side dependency.
+Publish the `root/` directory as the Pages source, or configure a Pages workflow that deploys that directory. The browser version has no server-side dependency.
